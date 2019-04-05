@@ -10,7 +10,8 @@ void rotate(int vel);
 void strafe(int vel);
 void slewLeft(int vel);
 void slewRight(int vel);
-void setBrakeMode(int mode);
+void brakeMode();
+void coastMode();
 
 void driveTask(int speed, double dist, int ms);
 void rotatePid(double rot, int ms);
