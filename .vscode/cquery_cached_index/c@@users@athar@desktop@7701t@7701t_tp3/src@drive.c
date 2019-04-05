@@ -77,16 +77,17 @@ void slewRight(int vel) {
   motor_move_velocity(backRight, -vel/2.48);
 }
 
-void setBrakeMode(int mode) {
-  motor_brake_mode_e_t brakeMode;
-  switch (mode) {
-    case 0 : brakeMode = E_MOTOR_BRAKE_COAST;
-    case 1 : brakeMode = E_MOTOR_BRAKE_HOLD;
-  }
+void brakeMode() {
   for(int i = 12; i <= 14; i++) {
-    motor_set_brake_mode(i, brakeMode);
+    motor_set_brake_mode(i, E_MOTOR_BRAKE_HOLD);
   }
-  motor_set_brake_mode(20, brakeMode);
+  motor_set_brake_mode(20, E_MOTOR_BRAKE_HOLD);
+}
+void coastMode() {
+  for(int i = 12; i <= 14; i++) {
+    motor_set_brake_mode(i, E_MOTOR_BRAKE_COAST);
+  }
+  motor_set_brake_mode(20, E_MOTOR_BRAKE_COAST);
 }
 
 void driveTask(int speed, double dist, int ms) { // drive pid

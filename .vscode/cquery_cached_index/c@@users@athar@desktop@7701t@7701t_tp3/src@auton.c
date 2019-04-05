@@ -52,36 +52,23 @@ void close_blue(){
   slewDrive(180, 33, 0, 2);
 }
 
-//////////////////////////////////  BACK RED FAR FLAGS 12 SWING //////////////////////////////////////////
+//////////////////////////////////  BACK RED FAR FLAGS 15 SWING //////////////////////////////////////////
 
 void backred() {
-  // intakeAuto(7); // start intake
-  // driveTask(150, 45, 200); // goes forward and grabs the ball
-  // driveTask(150, -4, 0); // back up so the cap doesnt get in the way
-  // rotateTask(-90, 0); // turn towards the alliance platform
-  // driveTask(100, 9, 400); // drive into the alliance platform for alignment
-  // driveTask(100, -8, 0); // drive back for space to turn
-  // rotateTask(30, 0); // turn towards far flags
-  // delay(5000); // wait 5 seconds for other team to shoot
-  // shoot(0.5); // shoot top flag
-  // intakeAuto(7); // intake second ball up to the puncher
-  // delay(400); // delay for ball to get up to the puncher
-  // angle(75); // angle to middle flag
-  // shoot(1.5); // shoot middle flag
-  // rotateTask(-32, 0); // rotate back towards the alliance platform
-  // driveTask(150, 32, 0); // park onto alliance platform
   driveTask(160, -52, 60);
   armAuto(80, 90);
   rotateTask(-30, 100);
   slowTask(100, 20, 100);
   rotateTask(-96, 0);
+  coastMode();
   slowTask(80, 6, 0);
   armAuto(100, 190);
   delay(1000);
+  brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
   delay(600);
-  driveTask(160, -19, 100);
+  driveTask(160, -20, 100);
   rotateTask(-90, 100);
   intakeAuto(3);
   driveTask(160, 15, 100);
@@ -98,32 +85,19 @@ void backred() {
   driveTask(160, 24, 0);
 }
 
-/////////////////////////////////// BACK BLUE FAR FLAGS 8 ////////////////////////////////////////////////////
+/////////////////////////////////// BACK BLUE FAR FLAGS 15 SWING ////////////////////////////////////////////////////
 
 void backblue() {
-  // intakeAuto(7); // start intake
-  // driveTask(150, 45, 200); // goes forward and grabs the ball
-  // driveTask(150, -4, 0); // back up so the cap doesnt get in the way
-  // rotateTask(90, 0); // turn towards the alliance platform
-  // driveTask(100, 9, 400); // drive into the alliance platform for alignment
-  // driveTask(100, -8, 0); // drive back for space to turn
-  // rotateTask(-33, 0); // turn towards far flags
-  // delay(5000); // wait 5 seconds for other team to shoot
-  // shoot(0.5); // shoot top flag
-  // intakeAuto(7); // intake second ball up to the puncher
-  // delay(400); // delay for ball to get up to the puncher
-  // angle(middle_flag); // angle to middle flag
-  // shoot(1.5); // shoot middle flag
-  // rotateTask(32, 0); // rotate back towards the alliance platform
-  // driveTask(150, 32, 0); // park onto alliance platform
   driveTask(160, -52, 60);
   armAuto(80, 90);
   rotateTask(30, 100);
   slowTask(100, 20, 100);
   rotateTask(96, 0);
+  coastMode();
   slowTask(80, 6, 0);
   armAuto(100, 190);
   delay(1000);
+  brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
   delay(600);
@@ -223,7 +197,9 @@ void skills_auton() {
 /////////////////////////// TESTING AUTON ////////////////////////////////////////////////////////
 
 void test(){ // testing pid
-  
+  // coastMode();
+  rotateTask(-90, 0);
+  driveTask(160, 24, 0);
 }
 
 
@@ -239,7 +215,41 @@ void test(){ // testing pid
 
 // AUTONS IN DEVELOPMENT / BACKUP AUTONS
 
+///////////////// BACKRED FAR FLAGS //////////////////////////////////////////
 
+// intakeAuto(7); // start intake
+// driveTask(150, 45, 200); // goes forward and grabs the ball
+// driveTask(150, -4, 0); // back up so the cap doesnt get in the way
+// rotateTask(-90, 0); // turn towards the alliance platform
+// driveTask(100, 9, 400); // drive into the alliance platform for alignment
+// driveTask(100, -8, 0); // drive back for space to turn
+// rotateTask(30, 0); // turn towards far flags
+// delay(5000); // wait 5 seconds for other team to shoot
+// shoot(0.5); // shoot top flag
+// intakeAuto(7); // intake second ball up to the puncher
+// delay(400); // delay for ball to get up to the puncher
+// angle(75); // angle to middle flag
+// shoot(1.5); // shoot middle flag
+// rotateTask(-32, 0); // rotate back towards the alliance platform
+// driveTask(150, 32, 0); // park onto alliance platform
+
+///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
+
+// intakeAuto(7); // start intake
+// driveTask(150, 45, 200); // goes forward and grabs the ball
+// driveTask(150, -4, 0); // back up so the cap doesnt get in the way
+// rotateTask(90, 0); // turn towards the alliance platform
+// driveTask(100, 9, 400); // drive into the alliance platform for alignment
+// driveTask(100, -8, 0); // drive back for space to turn
+// rotateTask(-33, 0); // turn towards far flags
+// delay(5000); // wait 5 seconds for other team to shoot
+// shoot(0.5); // shoot top flag
+// intakeAuto(7); // intake second ball up to the puncher
+// delay(400); // delay for ball to get up to the puncher
+// angle(middle_flag); // angle to middle flag
+// shoot(1.5); // shoot middle flag
+// rotateTask(32, 0); // rotate back towards the alliance platform
+// driveTask(150, 32, 0); // park onto alliance platform
 
 ///////////////// CLOSE RED 22 SWING /////////////////////////////////////////
 
