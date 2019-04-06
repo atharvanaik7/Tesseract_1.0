@@ -11,9 +11,5 @@
      case 4: backblue(); break;
      case 5: skills_auton(); break;
    }
-   backred();
-   // skills_auton();
-   // test();
-   // display();
    coastMode();
 }

@@ -62,13 +62,13 @@ void backred() {
   rotateTask(-96, 0);
   coastMode();
   slowTask(80, 6, 0);
-  armAuto(100, 190);
+  armAuto(100, 180);
   delay(1000);
   brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
   delay(600);
-  driveTask(160, -20, 100);
+  driveTask(160, -24, 100);
   rotateTask(-90, 100);
   intakeAuto(3);
   driveTask(160, 15, 100);
@@ -232,15 +232,13 @@ void test(){ // testing pid
 // shoot(1.5); // shoot middle flag
 // rotateTask(-32, 0); // rotate back towards the alliance platform
 // driveTask(150, 32, 0); // park onto alliance platform
-<<<<<<< HEAD
+
 
 ///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 
-=======
-
 ///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 
->>>>>>> ac124ac47cfea986d69d7f889675eb57e5a1cfa3
+
 // intakeAuto(7); // start intake
 // driveTask(150, 45, 200); // goes forward and grabs the ball
 // driveTask(150, -4, 0); // back up so the cap doesnt get in the way

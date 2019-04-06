@@ -232,15 +232,13 @@ void test(){ // testing pid
 // shoot(1.5); // shoot middle flag
 // rotateTask(-32, 0); // rotate back towards the alliance platform
 // driveTask(150, 32, 0); // park onto alliance platform
-<<<<<<< HEAD
+
 
 ///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 
-=======
-
 ///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 
->>>>>>> ac124ac47cfea986d69d7f889675eb57e5a1cfa3
+
 // intakeAuto(7); // start intake
 // driveTask(150, 45, 200); // goes forward and grabs the ball
 // driveTask(150, -4, 0); // back up so the cap doesnt get in the way
