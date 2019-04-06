@@ -334,11 +334,11 @@
             "-fdiagnostics-color",
             "--std=gnu11",
             "-o",
-            "C:/Users/athar/AppData/Local/Temp/tmp_xc2xesk/auton.c.o",
-            "src\\auton.c"
+            "C:/Users/athar/AppData/Local/Temp/tmpj54ystjk/arm.c.o",
+            "src\\arm.c"
         ],
         "directory": "C:\\Users\\athar\\Desktop\\7701T\\7701T_TP3",
-        "file": "src\\auton.c"
+        "file": "src\\arm.c"
     },
     {
         "arguments": [
@@ -365,10 +365,10 @@
             "-fdiagnostics-color",
             "--std=gnu11",
             "-o",
-            "C:/Users/athar/AppData/Local/Temp/tmp_xc2xesk/arm.c.o",
-            "src\\arm.c"
+            "bin/auton.c.o",
+            "src\\auton.c"
         ],
         "directory": "C:\\Users\\athar\\Desktop\\7701T\\7701T_TP3",
-        "file": "src\\arm.c"
+        "file": "src\\auton.c"
     }
 ]

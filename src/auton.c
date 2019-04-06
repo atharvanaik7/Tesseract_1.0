@@ -62,13 +62,13 @@ void backred() {
   rotateTask(-96, 0);
   coastMode();
   slowTask(80, 6, 0);
-  armAuto(100, 190);
+  armAuto(100, 180);
   delay(1000);
   brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
   delay(600);
-  driveTask(160, -20, 100);
+  driveTask(160, -24, 100);
   rotateTask(-90, 100);
   intakeAuto(3);
   driveTask(160, 15, 100);
