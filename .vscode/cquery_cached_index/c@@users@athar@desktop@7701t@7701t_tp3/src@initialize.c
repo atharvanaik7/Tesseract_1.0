@@ -37,6 +37,10 @@ void initialize() {
 	}
 	simple_text();
 
+	// adi_port_set_config(3, E_ADI_ANALOG_OUT);
+	// adi_port_set_config(4, E_ADI_ANALOG_IN);
+	// sonar = adi_ultrasonic_init(3, 4);
+	// sonar2 = adi_ultrasonic_init(5, 6);
 	adi_port_set_config(2, E_ADI_ANALOG_IN);
 	adi_analog_calibrate(2);
 }

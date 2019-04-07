@@ -90,23 +90,23 @@ void backred() {
 void backblue() {
   driveTask(160, -52, 60);
   armAuto(80, 90);
-  rotateTask(30, 100);
+  rotateTask(28, 100);
   slowTask(100, 20, 100);
-  rotateTask(96, 0);
+  rotateTask(92, 0);
   coastMode();
   slowTask(80, 6, 0);
-  armAuto(100, 190);
+  armAuto(100, 180);
   delay(1000);
   brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
   delay(600);
-  driveTask(160, -19, 100);
-  rotateTask(90, 100);
-  intakeAuto(3);
+  driveTask(160, -24, 50);
+  rotateTask(90, 50);
+  intakeAuto(3.5);
   driveTask(160, 15, 100);
   driveTask(160, -15, 50);
-  rotateTask(90, 100);
+  rotateTask(90, 0);
   slowTask(80, 8, 200);
   slowTask(80, -8, 100);
   rotateTask(-60, 0);
@@ -114,7 +114,7 @@ void backblue() {
   checkBall();
   angle(middle_flag);
   shoot(1.5);
-  rotateTask(60, 0);
+  rotateTask(65, 0);
   driveTask(160, 24, 0);
 }
 
@@ -232,9 +232,6 @@ void test(){ // testing pid
 // shoot(1.5); // shoot middle flag
 // rotateTask(-32, 0); // rotate back towards the alliance platform
 // driveTask(150, 32, 0); // park onto alliance platform
-
-
-///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 
 ///////////////// BACK BLUE FAR FLAGS ////////////////////////////////////////
 

@@ -12,6 +12,7 @@ void slewLeft(int vel);
 void slewRight(int vel);
 void brakeMode();
 void coastMode();
+void reset();
 
 void driveTask(int speed, double dist, int ms);
 void rotatePid(double rot, int ms);

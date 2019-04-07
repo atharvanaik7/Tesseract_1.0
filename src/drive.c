@@ -90,6 +90,13 @@ void coastMode() {
   motor_set_brake_mode(20, E_MOTOR_BRAKE_COAST);
 }
 
+void reset() {
+  for(int i = 12; i <= 14; i++) {
+    motor_tare_position(i);
+  }
+  motor_tare_position(20);
+}
+
 void driveTask(int speed, double dist, int ms) { // drive pid
   bool driving = true;
   double sp = dist / 16.5; // 12.9 - 16.5
