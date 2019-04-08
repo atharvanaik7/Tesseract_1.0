@@ -12,9 +12,12 @@ void armOp() {
     }
 }
 
+void armo(int velocity) {
+  motor_move_velocity(arm, velocity);
+}
+
 void armAuto(int speed, double rot) {
   rot /= 360;
   rot *= 5;
-
   motor_move_absolute(arm, rot, speed);
 }

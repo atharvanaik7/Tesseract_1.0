@@ -6,5 +6,6 @@ void armOp();
 
 // Autonomous Functions
 void armAuto(int speed, double rot);
+void armo(int velocity);
 
 #endif

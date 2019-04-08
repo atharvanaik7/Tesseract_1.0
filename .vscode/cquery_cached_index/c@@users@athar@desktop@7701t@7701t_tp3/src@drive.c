@@ -97,6 +97,14 @@ void reset() {
   motor_tare_position(20);
 }
 
+void wallCheck() { //testing
+    while(adi_ultrasonic_get(sonar) > adi_ultrasonic_get(sonar2)) {
+      rotate(-10);
+      delay(20);
+    }
+    rotate(0);
+  }
+
 void driveTask(int speed, double dist, int ms) { // drive pid
   bool driving = true;
   double sp = dist / 16.5; // 12.9 - 16.5

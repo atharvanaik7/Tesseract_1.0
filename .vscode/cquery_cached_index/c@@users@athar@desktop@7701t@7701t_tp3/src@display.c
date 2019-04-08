@@ -306,9 +306,9 @@ void simple_text() {
 
   // TEXT //////////////////////////////////////////////////////////////////////
 
-  hold_label = lv_label_create (screen, NULL);
-  lv_obj_set_style(hold_label, &word_style);
-  lv_obj_align(hold_label, NULL, LV_ALIGN_IN_TOP_RIGHT, -50, 0);
+  // hold_label = lv_label_create (screen, NULL);
+  // lv_obj_set_style(hold_label, &word_style);
+  // lv_obj_align(hold_label, NULL, LV_ALIGN_IN_TOP_RIGHT, -50, 0);
 
   // IMAGE /////////////////////////////////////////////////////////////////////
 

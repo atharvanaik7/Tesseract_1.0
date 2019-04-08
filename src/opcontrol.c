@@ -17,7 +17,8 @@ void opcontrol() {
 	while (true) {
 
 		// int turn = pow(ch4, 2.2) / pow(127, 1.2);
-		// printf("Sensor Reading %d \n", adi_analog_read_calibrated(2));
+		// printf("Sensor Reading %d \n", adi_analog_read_calibrated(3));
+		// printf("Sensor Reading2 %d \n", adi_analog_read_calibrated(4));
 		driveOp();
 		intakeOp();
 		puncherOp();

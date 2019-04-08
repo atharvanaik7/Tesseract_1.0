@@ -197,9 +197,7 @@ void skills_auton() {
 /////////////////////////// TESTING AUTON ////////////////////////////////////////////////////////
 
 void test(){ // testing pid
-  // coastMode();
-  rotateTask(-90, 0);
-  driveTask(160, 24, 0);
+  
 }
 
 
