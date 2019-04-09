@@ -72,7 +72,7 @@ void backred() {
   rotateTask(-90, 100);
   intakeAuto(3);
   driveTask(160, 15, 100);
-  driveTask(160, -15, 50);
+  driveTask(160, -6, 50);
   rotateTask(-90, 100);
   slowTask(80, 8, 200);
   slowTask(80, -8, 100);
@@ -105,7 +105,7 @@ void backblue() {
   rotateTask(90, 50);
   intakeAuto(3.5);
   driveTask(160, 15, 100);
-  driveTask(160, -15, 50);
+  driveTask(160, -6, 50);
   rotateTask(90, 0);
   slowTask(80, 8, 200);
   slowTask(80, -8, 100);
@@ -159,15 +159,15 @@ void skills_auton() {
   rotateTask(-8, 0); // turn a bit more so it is perfectly aligned with wall
   driveTask(100, 19, 50); // drive into wall
   angle(0); // angle to high flag
-  driveTask(140, -26, 0); // drive back to be parallel with cap
+  driveTask(160, -26, 0); // drive back to be parallel with cap
   rotateTask(-90, 0); // rotate towards cap
-  flipAuto(150, 4); // turn on intake to flip cap
+  flipAuto(140, 4); // turn on intake to flip cap
   slowTask(120, 35, 50); // drive into cap
-  slowTask(120, -10, 0); // drive back to line up with bottom flag
-  rotateTask(-192, 0); // rotate towards bottom flag
+  slowTask(140, -10, 0); // drive back to line up with bottom flag
+  rotateTask(190, 0); // rotate towards bottom flag
   flipAuto(150, 20); // start intake to flip
   driveTask(160, 65, 50); // drive into cap to flip
-  slowTask(120, -15, 0); // back up so cap does not get caught when turning
+  slowTask(140, -15, 0); // back up so cap does not get caught when turning
   rotateTask(-93, 0); // rotate towards bottom flag
   slowTask(120, 30, 50); // drive into bottom flag
   driveTask(160, -50, 0); // // drive back to be parallel with cap
@@ -178,11 +178,11 @@ void skills_auton() {
   // driveTask(140, 25, 100); // drive forward to be parallel with flags - +25
   rotateTask(93, 0); // rotate towards flags
   shoot(0.75); // shoot top
-  angle(middle_flag); // angle to middle flag
   checkBall();
+  angle(middle_flag); // angle to middle flag
   shoot(1.4); // shoot middle
   rotateTask(-90, 0); // rotate to be parallel with wall
-  driveTask(160, -15, 0); // drive back
+  slowTask(140, -15, 0); // drive back
   rotateTask(-90, 0); // rotate to get closer to platform
   driveTask(160, 26.5, 0); // drive to be parallel with platform
   rotateTask(90, 0); // rotate towards the platform
