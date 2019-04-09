@@ -56,6 +56,18 @@ void drive(int vel) {
   motor_move_velocity(backLeft, vel);
   motor_move_velocity(backRight, -vel);
 }
+void slant(int vel) {
+  driveLeft(vel);
+  driveRight(vel);
+}
+void driveLeft(int vel) {
+  motor_move_velocity(frontLeft, vel);
+  motor_move_velocity(backLeft, vel);
+}
+void driveRight(int vel) {
+  motor_move_velocity(frontRight, -vel);
+  motor_move_velocity(backRight, -vel);
+}
 void rotate(int vel) {
   // vel *= 127;
   // vel /= 200;
@@ -121,9 +133,10 @@ void driveTask(int speed, double dist, int ms) { // drive pid
   int velocity = 0;
 
   motor_tare_position(13);
+  motor_tare_position(14);
 
   while(driving) {
-    pv = motor_get_position(13);
+    pv = (motor_get_position(13) + motor_get_position(14)) / 2;
 
     // if (error <= 0.01 && error >= -0.01) { integral += error; }
     // else { integral = 0; }
@@ -195,64 +208,56 @@ void rotateTask(double rot, int ms) { // rotate pid
   delay(ms);
 }
 
-void slewDrive(int speed, double dist, int ms, int dir) { // slew control
-  bool driving = true;
-  double sp = dist / 16.5; // 12.9 - 16.5
-  double prev_error = 0;
+void slewTask(int speed, double radius, double angle, int direction, int ms) {
+bool driving = true;
+double sp = 2*M_PI*radius*(angle/360);
+int width = 15;
+double prev_error = 0;
 
-  int kp = 400; //200 127
-  int ki = 0;
-  int kd = 100; //100 63
-  double pv = 0;
-  double error = 0;
-  double integral = 0;
-  double integralActive = (3/12.8);
-  double derivative = 0;
-  int velocity = 0;
+int kp = 400;
+int ki = 0;
+int kd = 100;
+double pv = 0;
+double error = 0;
+double integral = 0;
+double integralActive = (3/12.1);
+double derivative = 0;
+int velocity = 0;
 
-  motor_tare_position(13);
+motor_tare_position(13);
+motor_tare_position(14);
 
-  while(driving) {
-    pv = motor_get_position(13);
+while(driving) {
+  pv = (motor_get_position(13) - motor_get_position(14))/2;
 
-    // if (error <= 0.01 && error >= -0.01) { integral += error; }
-    // else { integral = 0; }
+  error = sp - pv;
+  derivative = prev_error - error;
+  velocity = error*kp + derivative*kd;
+  prev_error = error;
 
-    error = sp - pv;
-    derivative = error - prev_error;
-    velocity = error*kp + derivative*kd + integral*ki;
-    prev_error = error;
+  if (velocity > speed) { velocity = speed; }
+  else if (velocity < -speed) { velocity = -speed; }
 
-    if (velocity > speed) { velocity = speed; }
-    else if (velocity < -speed) { velocity = -speed; }
-
-    if (dir == 1) {
-      if(fabs(error) > sp*0.4) {
-        slewLeft(velocity);
-      }
-      else {
-        drive(velocity);
-      }
-    }
-    else if (dir == 2) {
-      if(fabs(error) > sp*0.4) {
-        slewRight(velocity);
-      }
-      else {
-        drive(velocity);
-      }
-    }
-
-    if (error <= .05 && error >= -.05) {
-      driving = false;
-    }
-
-    delay(20);
+  if (direction == 1) { // RIGHT
+    driveLeft(velocity);
+    velocity = (2*M_PI*(radius-width)*(angle/360))/sp;
+    driveRight(velocity);
   }
-  slewLeft(0);
-  slewRight(0);
-  drive(0);
-  delay(ms);
+  else {
+    driveRight(velocity);
+    velocity = (2*M_PI*(radius-width)*(angle/360))/sp;
+    driveLeft(velocity);
+  }
+
+  if (error <= .01 && error >= -.01) {
+    driving = false;
+  }
+  // hi
+
+  delay(20);
+}
+slant(0);
+delay(ms);
 }
 
 void rotatePid(double rot, int ms) { // pigpen style

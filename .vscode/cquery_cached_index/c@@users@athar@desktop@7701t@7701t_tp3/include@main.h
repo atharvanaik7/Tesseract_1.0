@@ -52,6 +52,7 @@
 #define puncher 17
 #define angler 18
 
+#define pi 3.1415
 
 #define MASTER E_CONTROLLER_MASTER
 #define PARTNER E_CONTROLLER_PARTNER
