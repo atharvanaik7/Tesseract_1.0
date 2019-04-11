@@ -46,12 +46,11 @@ void driveOp() {
 }
 
 
-
+// drive vel functions
 void drive(int vel) {
   driveLeft(vel);
   driveRight(vel);
 }
-
 void driveLeft(int vel) {
   motor_move_velocity(frontLeft, vel);
   motor_move_velocity(backLeft, vel);
@@ -81,6 +80,7 @@ void slewRight(int vel) {
   motor_move_velocity(backRight, -vel/2.48);
 }
 
+// drive mode functions
 void brakeMode() {
   for(int i = 12; i <= 14; i++) {
     motor_set_brake_mode(i, E_MOTOR_BRAKE_HOLD);
@@ -93,14 +93,12 @@ void coastMode() {
   }
   motor_set_brake_mode(20, E_MOTOR_BRAKE_COAST);
 }
-
 void reset() {
   for(int i = 12; i <= 14; i++) {
     motor_tare_position(i);
   }
   motor_tare_position(20);
 }
-
 void wallCheck() { //testing
     while(adi_ultrasonic_get(sonar) > adi_ultrasonic_get(sonar2)) {
       rotate(-10);
@@ -109,6 +107,7 @@ void wallCheck() { //testing
     rotate(0);
   }
 
+// pid functions
 void driveTask(int speed, double dist, int ms) { // drive pid
   bool driving = true;
   double sp = dist / 16.5; // 12.9 - 16.5
@@ -152,7 +151,6 @@ void driveTask(int speed, double dist, int ms) { // drive pid
   drive(0);
   delay(ms);
 }
-
 void rotateTask(double rot, int ms) { // rotate pid
 
   rot /= 360;
@@ -199,8 +197,7 @@ void rotateTask(double rot, int ms) { // rotate pid
   rotate(0);
   delay(ms);
 }
-
-void skewTask(int speed, double radius, double angle, int direction, int ms) {
+void skewTask(int speed, double radius, double angle, int direction, int ms) {// skew
   bool driving = true;
     double sp = 2*pi*radius*(angle/360);
     // printf("%f\n",sp);
@@ -253,7 +250,6 @@ void skewTask(int speed, double radius, double angle, int direction, int ms) {
     drive(0);
     delay(ms);
 }
-
 void rotatePid(double rot, int ms) { // pigpen style
  rot /= 360;
  double sp;
@@ -325,7 +321,6 @@ void rotatePid(double rot, int ms) { // pigpen style
  }
  rotate(0);
  delay(ms);}
-
 void slowTask(int speed, double dist, int ms) { // slow drive pid
   bool driving = true;
   double sp = dist / 16.5; // 12.9 - 16.5
@@ -368,7 +363,6 @@ void slowTask(int speed, double dist, int ms) { // slow drive pid
   drive(0);
   delay(ms);
 }
-
 void fastTurn(double rot, int ms) { // fast rotate pid
 
   rot /= 360;
