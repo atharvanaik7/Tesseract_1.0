@@ -52,7 +52,7 @@
 #define puncher 17
 #define angler 18
 
-#define pi 3.1415
+#define pi 3.14159265359
 
 #define MASTER E_CONTROLLER_MASTER
 #define PARTNER E_CONTROLLER_PARTNER
@@ -78,7 +78,7 @@ adi_ultrasonic_t sonar;
 adi_ultrasonic_t sonar2;
 
 #define high_flag 0
-#define middle_flag 90
+#define middle_flag 75
 
 int auton_select;
 

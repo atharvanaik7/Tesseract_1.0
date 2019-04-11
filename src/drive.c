@@ -47,19 +47,11 @@ void driveOp() {
 
 
 
-
 void drive(int vel) {
-  // vel *= 127;
-  // vel /= 200;
-  motor_move_velocity(frontLeft, vel);
-  motor_move_velocity(frontRight, -vel);
-  motor_move_velocity(backLeft, vel);
-  motor_move_velocity(backRight, -vel);
-}
-void slant(int vel) {
   driveLeft(vel);
   driveRight(vel);
 }
+
 void driveLeft(int vel) {
   motor_move_velocity(frontLeft, vel);
   motor_move_velocity(backLeft, vel);
@@ -122,7 +114,7 @@ void driveTask(int speed, double dist, int ms) { // drive pid
   double sp = dist / 16.5; // 12.9 - 16.5
   double prev_error = 0;
 
-  int kp = 180; //200 127
+  int kp = 185; //200 127
   int ki = 0;
   int kd = 100; //100 63
   double pv = 0;
@@ -132,11 +124,11 @@ void driveTask(int speed, double dist, int ms) { // drive pid
   double derivative = 0;
   int velocity = 0;
 
-  motor_tare_position(13);
-  motor_tare_position(14);
+  motor_tare_position(backLeft);
+  motor_tare_position(backRight);
 
   while(driving) {
-    pv = (motor_get_position(13) + motor_get_position(14)) / 2;
+    pv = (motor_get_position(backLeft) - motor_get_position(backRight)) / 2;
 
     // if (error <= 0.01 && error >= -0.01) { integral += error; }
     // else { integral = 0; }
@@ -208,56 +200,58 @@ void rotateTask(double rot, int ms) { // rotate pid
   delay(ms);
 }
 
-void slewTask(int speed, double radius, double angle, int direction, int ms) {
-bool driving = true;
-double sp = 2*M_PI*radius*(angle/360);
-int width = 15;
-double prev_error = 0;
+void skewTask(int speed, double radius, double angle, int direction, int ms) {
+  bool driving = true;
+    double sp = 2*pi*radius*(angle/360);
+    // printf("%f\n",sp);
+    sp /= 15.5;
+    double width = 13.5/2;
+    double prev_error = 0;
 
-int kp = 400;
-int ki = 0;
-int kd = 100;
-double pv = 0;
-double error = 0;
-double integral = 0;
-double integralActive = (3/12.1);
-double derivative = 0;
-int velocity = 0;
+    int kp = 200;
+    int ki = 0;
+    int kd = 200;
+    double pv = 0;
+    double error = 0;
+    double integral = 0;
+    double integralActive = (3/12.1);
+    double derivative = 0;
+    int velocity = 0;
 
-motor_tare_position(13);
-motor_tare_position(14);
+    motor_tare_position(backLeft);
+    motor_tare_position(backRight);
 
-while(driving) {
-  pv = (motor_get_position(13) - motor_get_position(14))/2;
+    while(driving) {
+      pv = (motor_get_position(backLeft) - motor_get_position(backRight)) / 2;
 
-  error = sp - pv;
-  derivative = prev_error - error;
-  velocity = error*kp + derivative*kd;
-  prev_error = error;
+      error = sp - pv;
+      derivative = prev_error - error;
+      velocity = error*kp + derivative*kd + integral*ki;
+      prev_error = error;
 
-  if (velocity > speed) { velocity = speed; }
-  else if (velocity < -speed) { velocity = -speed; }
+      if (velocity > speed) { velocity = speed; }
+      else if (velocity < -speed) { velocity = -speed; }
 
-  if (direction == 1) { // RIGHT
-    driveLeft(velocity);
-    velocity = (2*M_PI*(radius-width)*(angle/360))/sp;
-    driveRight(velocity);
-  }
-  else {
-    driveRight(velocity);
-    velocity = (2*M_PI*(radius-width)*(angle/360))/sp;
-    driveLeft(velocity);
-  }
+      if (direction == RIGHT) {
+        driveLeft(velocity);
+        velocity *= (radius-width)/(radius+width);
+        driveRight(velocity);
+      }
+      else {
+        driveRight(velocity);
+        velocity *= (radius-width)/(radius+width);
+        driveLeft(velocity);
+      }
 
-  if (error <= .01 && error >= -.01) {
-    driving = false;
-  }
-  // hi
+      if (error <= .01 && error >= -.01) {
+        driving = false;
+      }
+      // hi
 
-  delay(20);
-}
-slant(0);
-delay(ms);
+      delay(20);
+    }
+    drive(0);
+    delay(ms);
 }
 
 void rotatePid(double rot, int ms) { // pigpen style

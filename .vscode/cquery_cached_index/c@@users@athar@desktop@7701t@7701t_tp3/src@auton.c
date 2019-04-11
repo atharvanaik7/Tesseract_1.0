@@ -2,9 +2,9 @@
 ///////////////////////// CLOSE RED 18 SWING //////////////////////////////////////////////////////
 
 void close_red() {
-  intakeAuto(5.8); // starts intake
+  intakeAuto(5.7); // starts intake
   driveTask(160, 44.5, 50); // goes forward into cap and grabs the ball
-  driveTask(160, -45.5, 50); // comes back hits the wall to re-align
+  driveTask(160, -46, 50); // comes back hits the wall to re-align
   driveTask(100, 6, 50); // go foward a bit to have space to turn
   rotateTask(-90, 0); // turn towards the flags to shoot
   shoot(0.75); // shoot top flag
@@ -12,18 +12,18 @@ void close_red() {
   angle(middle_flag); // angle to shoot middle
   shoot(1.4); // shoot middle flag
   intakeAuto(15);
-  fastTurn(-10, 0); // rotate so it is lined up with bottom flag
+  rotateTask(-10, 0); // rotate so it is lined up with bottom flag
   driveTask(160, 50, 0); // drive into bottom flag
   driveTask(160, -24, 0); // back up so the robot is parallel with the cap
   rotateTask(90, 0); // turn towards the cap
-  driveTask(80, -9, 50); // back up into wall to re-align
+  driveTask(80, -6, 50); // back up into wall to re-align
   flipAuto(200, 4); // start intake to flip cap
   slowTask(120, 34, 0);
   angle(middle_flag); // angle to shoot middle flag on the other side
-  fastTurn(-18, 0); // rotate towards that flag
+  fastTurn(-17, 0); // rotate towards that flag
   intakeAuto(5); // intake to make sure ball is in puncher
   shoot(0.5); // shoot other side
-  slewTask(180, 34.5, 90, 0, 0);
+  skewTask(180, 20, 90, LEFT, 0);
 }
 
 //////////////////////////////////// CLOSE BLUE 18 SWING /////////////////////////////////////////////////////
@@ -38,7 +38,7 @@ void close_blue(){
   angle(middle_flag); // angle to shoot middle
   shoot(1.4); // shoot middle flag
   intakeAuto(15);
-  fastTurn(10, 0); // rotate so it is lined up with bottom flag
+  rotateTask(10, 0); // rotate so it is lined up with bottom flag
   driveTask(160, 50, 0); // drive into bottom flag
   driveTask(160, -24, 0); // back up so the robot is parallel with the cap
   rotateTask(-90, 0); // turn towards the cap
@@ -49,7 +49,7 @@ void close_blue(){
   fastTurn(18, 0); // rotate towards that flag
   intakeAuto(5); // intake to make sure ball is in puncher
   shoot(0.5); // shoot other side
-  slewTask(180, 34.5, 90, 1, 0);
+  skewTask(200, 20, 90, RIGHT, 0);
 }
 
 //////////////////////////////////  BACK RED FAR FLAGS 15 SWING //////////////////////////////////////////
@@ -121,7 +121,7 @@ void backblue() {
 ////////////////////////////////// SKILLS 25 ///////////////////////////////////////////////////////////////////
 
 void skills_auton() {
-  intakeAuto(6); // intake ball
+  intakeAuto(5.8); // intake ball
   driveTask(160, 49, 150); // drive into cap with ball
   driveTask(160, -49.5, 50); // back up into wall
   driveTask(100, 6, 50);  // go forward for room to turn
@@ -194,7 +194,7 @@ void skills_auton() {
 /////////////////////////// TESTING AUTON ////////////////////////////////////////////////////////
 
 void test(){ // testing pid
-  checkBall();
+  skewTask(100, 48, 90, LEFT, 0);
 }
 
 

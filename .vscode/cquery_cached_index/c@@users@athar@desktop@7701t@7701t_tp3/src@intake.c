@@ -27,7 +27,7 @@ void flipAuto(int speed, double rot) {
 void checkBall() {
   motor_move_velocity(intake, -200);
   for(int i = 0; i < 150; i++){ // after 150 loops turn off intake if ball is not there
-    if(adi_analog_read_calibrated(2) < 600) {
+    if(adi_analog_read_calibrated(2) < 500) {
       break;
       }
       delay(20);

@@ -24,7 +24,7 @@ void rotateTask(double rot, int ms);
 void strafeTask(int speed, double dist, int ms);
 void rotateCounterTask(double rot, int ms);
 void slewDrive(int speed, double dist, int ms, int dir);
-void slewTask(int speed, double radius, double angle, int direction, int ms);
+void skewTask(int speed, double radius, double angle, int direction, int ms);
 void slowTask(int speed, double dist, int ms);
 void fastTurn(double rot, int ms);
 

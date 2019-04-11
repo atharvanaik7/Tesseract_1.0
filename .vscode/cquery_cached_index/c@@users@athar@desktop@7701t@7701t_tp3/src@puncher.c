@@ -25,7 +25,7 @@ void puncherOp() {
     motor_move_absolute(angler, 0, 75); // FRONT TOP
   }
   if (controller_get_digital(MASTER, Y)) { // Y
-    motor_move_absolute(angler, 85, 100); // FRONT MIDDLE
+    motor_move_absolute(angler, 75, 100); // FRONT MIDDLE
   }
   if(controller_get_digital(MASTER, UP)) { // UP
     motor_move_absolute(angler, 50, 75); // BACK TOP
@@ -46,7 +46,7 @@ void puncherOp() {
 
 
 void shoot(double rot) {
-  motor_move_relative(puncher, rot, 100);
+  motor_move_relative(puncher, rot, 200);
   rot += motor_get_position(puncher);
   while (!(motor_get_position(puncher) > rot - 0.05 && motor_get_position(puncher) < rot + 0.05)) {
     delay(5);
