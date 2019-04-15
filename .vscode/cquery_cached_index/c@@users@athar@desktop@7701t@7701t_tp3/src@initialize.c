@@ -38,7 +38,6 @@ void initialize() {
 	simple_text();
 
 	adi_port_set_config(2, E_ADI_ANALOG_IN);
-	adi_analog_calibrate(2);
 }
 
 /**

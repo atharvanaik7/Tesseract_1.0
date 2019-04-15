@@ -15,7 +15,7 @@ void driveOp() {
   }
 
   // Button A switched between different brake modes
-  if (controller_get_digital(MASTER, A)) {
+  if (controller_get_digital(MASTER, LEFT)) {
     if (stop == 0) {
       if (brake) {
         for (int i = 11; i <= 14; i++) { motor_set_brake_mode(i, E_MOTOR_BRAKE_HOLD); }

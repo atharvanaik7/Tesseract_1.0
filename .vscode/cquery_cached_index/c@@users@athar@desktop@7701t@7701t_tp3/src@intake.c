@@ -3,10 +3,17 @@
 int _intake;
 
 void intakeOp() {
-  if (controller_get_digital(MASTER, R2)) {
+  if (controller_get_digital(MASTER, L2)) {
+    if (adi_analog_read(2) < 2900 && !(controller_get_digital(MASTER, B)) && !(controller_get_digital(MASTER, L1))) {
+    // if (adi_analog_read(2) < 2900 && adi_analog_read(3) < 2900) {
+      // _intake = 0;
+      _intake = -127;
+    }
+    else {
+      _intake = -127;
+    }
+  } else if (controller_get_digital(MASTER, R2)) {
     _intake = 80;
-  } else if (controller_get_digital(MASTER, L2)) {
-    _intake = -127;
   } else {
     _intake = 0;
   }

@@ -1,14 +1,50 @@
 #include "main.h"
 
 int _puncher;
+int press = 0;
+double pos = 0;
+double total_rot = 0;
+double needed_rot = 0.75;
+double start_rot = 0.75;
+bool auto_ratchet = false;
+bool ratcheted = false;
 
 void puncherOp() {
-  if (controller_get_digital(MASTER, B)) {
+  if(controller_get_digital(MASTER, B) && press == 0) {
+    auto_ratchet = true;
+    needed_rot += 1;
+    press = 45;
+  }
+
+  if (auto_ratchet) {
+    pos = motor_get_position(puncher);
+    if (ratcheted) {
+      total_rot = needed_rot - pos;
+      if (!(total_rot < 0.02 && total_rot > -0.02)) { _puncher = 127; }
+      else { auto_ratchet = false; }
+    }
+    else {
+      total_rot = start_rot - fmod(pos, 1);
+      if (!(total_rot < 0.02 && total_rot > -0.02)) { _puncher = 127; }
+      else {
+        start_rot = 1;
+        needed_rot = 0;
+        motor_tare_position(puncher);
+        ratcheted = true;
+        auto_ratchet = false;
+      }
+    }
+  }
+  else if (controller_get_digital(MASTER, A)) {
+    ratcheted = false;
     _puncher = 127;
   } else {
     _puncher = 0;
   }
 
+  if (press > 0) {
+    press--;
+  }
   // autoRachet();
 
   if (controller_get_digital(MASTER, DOWN)) {
@@ -25,7 +61,7 @@ void puncherOp() {
     motor_move_absolute(angler, 0, 75); // FRONT TOP
   }
   if (controller_get_digital(MASTER, Y)) { // Y
-    motor_move_absolute(angler, 75, 100); // FRONT MIDDLE
+    motor_move_absolute(angler, 80, 100); // FRONT MIDDLE
   }
   if(controller_get_digital(MASTER, UP)) { // UP
     motor_move_absolute(angler, 50, 75); // BACK TOP
