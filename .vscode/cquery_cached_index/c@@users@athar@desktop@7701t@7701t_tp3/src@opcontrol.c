@@ -14,6 +14,7 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	motor_tare_position(puncher);
 	while (true) {
 
 		// int turn = pow(ch4, 2.2) / pow(127, 1.2);

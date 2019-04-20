@@ -25,10 +25,6 @@ void initialize() {
 	motor_set_encoder_units(18, E_MOTOR_ENCODER_DEGREES);
 	motor_set_brake_mode(15, E_MOTOR_BRAKE_HOLD);
 
-	// adi_analog_calibrate(1);
-
-
-
 	display();
 	if(competition_is_disabled()) {
 		while(auton_select == 0) {
@@ -37,7 +33,10 @@ void initialize() {
 	}
 	simple_text();
 
-	adi_port_set_config(2, E_ADI_ANALOG_IN);
+	// adi_port_set_config(2, E_ADI_ANALOG_IN);
+	// adi_port_set_config(3, E_ADI_ANALOG_IN);
+	// adi_port_set_config(4, E_ADI_ANALOG_IN);
+
 }
 
 /**

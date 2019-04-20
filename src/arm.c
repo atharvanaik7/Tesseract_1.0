@@ -5,7 +5,7 @@ void armOp() {
 
 
     if(controller_get_digital(MASTER, R1)) {
-      motor_move_absolute(arm, 2.4, 200);
+      motor_move_absolute(arm, 2.43, 200);
     }
     else {
       motor_move(arm, ch2);

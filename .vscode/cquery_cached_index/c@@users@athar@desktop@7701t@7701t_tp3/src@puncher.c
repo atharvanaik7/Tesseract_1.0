@@ -4,12 +4,14 @@ int _puncher;
 int press = 0;
 double pos = 0;
 double total_rot = 0;
-double needed_rot = 0.75;
-double start_rot = 0.75;
+double needed_rot = 0;
+double start_rot = 1;
 bool auto_ratchet = false;
-bool ratcheted = false;
+bool ratcheted = true;
 
 void puncherOp() {
+
+
   if(controller_get_digital(MASTER, B) && press == 0) {
     auto_ratchet = true;
     needed_rot += 1;
@@ -61,7 +63,7 @@ void puncherOp() {
     motor_move_absolute(angler, 0, 75); // FRONT TOP
   }
   if (controller_get_digital(MASTER, Y)) { // Y
-    motor_move_absolute(angler, 80, 100); // FRONT MIDDLE
+    motor_move_absolute(angler, 85, 100); // FRONT MIDDLE
   }
   if(controller_get_digital(MASTER, UP)) { // UP
     motor_move_absolute(angler, 50, 75); // BACK TOP

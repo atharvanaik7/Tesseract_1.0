@@ -12,7 +12,7 @@
      case 4: backblue(); break;
      case 5: skills_auton(); break;
    }
-   close_red();
+   // close_blue();
    // skills_auton();
    // test();
    // display();

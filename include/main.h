@@ -74,11 +74,10 @@
 #define ch3 controller_get_analog(MASTER, ANALOG_LEFT_Y)
 #define ch4 controller_get_analog(MASTER, ANALOG_LEFT_X)
 
-adi_ultrasonic_t sonar;
-adi_ultrasonic_t sonar2;
+adi_ultrasonic_t ult;
 
 #define high_flag 0
-#define middle_flag 75
+#define middle_flag 85
 
 int auton_select;
 

@@ -15,7 +15,7 @@ void driveOp() {
   }
 
   // Button A switched between different brake modes
-  if (controller_get_digital(MASTER, LEFT)) {
+  if (controller_get_digital(MASTER, RIGHT)) {
     if (stop == 0) {
       if (brake) {
         for (int i = 11; i <= 14; i++) { motor_set_brake_mode(i, E_MOTOR_BRAKE_HOLD); }
@@ -32,10 +32,10 @@ void driveOp() {
   // Arcade
   // int turn = pow(ch4, 3) / pow(127, 2); // Turning Sensitivity
 
-  _frontLeft = ch3 + ch4*0.8;
-  _frontRight = -ch3 + ch4*0.8;
-  _backLeft = ch3 + ch4*0.8;
-  _backRight = -ch3 + ch4*0.8;
+  _frontLeft = ch3 + ch4;
+  _frontRight = -ch3 + ch4;
+  _backLeft = ch3 + ch4;
+  _backRight = -ch3 + ch4;
 
 
   // Setting the Motors
@@ -99,21 +99,14 @@ void reset() {
   }
   motor_tare_position(20);
 }
-void wallCheck() { //testing
-    while(adi_ultrasonic_get(sonar) > adi_ultrasonic_get(sonar2)) {
-      rotate(-10);
-      delay(20);
-    }
-    rotate(0);
-  }
 
 // pid functions
 void driveTask(int speed, double dist, int ms) { // drive pid
   bool driving = true;
-  double sp = dist / 16.5; // 12.9 - 16.5
+  double sp = dist / 12.9; // 12.9 - 16.5
   double prev_error = 0;
 
-  int kp = 185; //200 127
+  int kp = 200; //200 127
   int ki = 0;
   int kd = 100; //100 63
   double pv = 0;
@@ -155,8 +148,8 @@ void rotateTask(double rot, int ms) { // rotate pid
 
   rot /= 360;
   double sp;
-  if(rot < 0){ sp = rot* 2.45; } // turning counter clockwise - 3.0 - 2.4 - 2.8 - 2.5
-  else { sp = rot* 2.55; } // turning clockwise - 3.1 - 2.45 - 2.95 - 2.5
+  if(rot < 0){ sp = rot* 3.0; } // turning counter clockwise - 3.0 - 2.4 - 2.8 - 2.5
+  else { sp = rot* 3.1; } // turning clockwise - 3.1 - 2.45 - 2.95 - 2.5
   bool driving = true;
   double prev_error = 0;
 
@@ -326,7 +319,7 @@ void slowTask(int speed, double dist, int ms) { // slow drive pid
   double sp = dist / 16.5; // 12.9 - 16.5
   double prev_error = 0;
 
-  int kp = 250; //200 127
+  int kp = 280; //200 127
   int ki = 0;
   int kd = 100; //100 63
   double pv = 0;

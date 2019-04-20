@@ -3,10 +3,10 @@
 int _intake;
 
 void intakeOp() {
+  printf("%d\n", adi_analog_read(3));
+  // printf("%d\n", adi_analog_read(4));
   if (controller_get_digital(MASTER, L2)) {
-    if (adi_analog_read(2) < 2900 && !(controller_get_digital(MASTER, B)) && !(controller_get_digital(MASTER, L1))) {
-    // if (adi_analog_read(2) < 2900 && adi_analog_read(3) < 2900) {
-      // _intake = 0;
+    if (adi_analog_read(3) < 2800 || adi_analog_read(4) < 2800) {
       _intake = -127;
     }
     else {
@@ -34,10 +34,10 @@ void flipAuto(int speed, double rot) {
 void checkBall() {
   motor_move_velocity(intake, -200);
   for(int i = 0; i < 150; i++){ // after 150 loops turn off intake if ball is not there
-    if(adi_analog_read_calibrated(2) < 500) {
+    if(adi_analog_read_calibrated(2) < 0) {
       break;
       }
-      delay(20);
+      delay(5);
   }
   motor_move_velocity(intake, 0);
 }
