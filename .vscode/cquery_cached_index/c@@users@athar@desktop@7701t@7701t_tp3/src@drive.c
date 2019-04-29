@@ -82,16 +82,16 @@ void slewRight(int vel) {
 
 // drive mode functions
 void brakeMode() {
-  for(int i = 12; i <= 14; i++) {
-    motor_set_brake_mode(i, E_MOTOR_BRAKE_HOLD);
-  }
-  motor_set_brake_mode(20, E_MOTOR_BRAKE_HOLD);
+  motor_set_brake_mode(frontLeft, E_MOTOR_BRAKE_HOLD);
+  motor_set_brake_mode(frontRight, E_MOTOR_BRAKE_HOLD);
+  motor_set_brake_mode(backLeft, E_MOTOR_BRAKE_HOLD);
+  motor_set_brake_mode(backRight, E_MOTOR_BRAKE_HOLD);
 }
 void coastMode() {
-  for(int i = 12; i <= 14; i++) {
-    motor_set_brake_mode(i, E_MOTOR_BRAKE_COAST);
-  }
-  motor_set_brake_mode(20, E_MOTOR_BRAKE_COAST);
+  motor_set_brake_mode(frontLeft, E_MOTOR_BRAKE_COAST);
+  motor_set_brake_mode(frontRight, E_MOTOR_BRAKE_COAST);
+  motor_set_brake_mode(backLeft, E_MOTOR_BRAKE_COAST);
+  motor_set_brake_mode(backRight, E_MOTOR_BRAKE_COAST);
 }
 void reset() {
   for(int i = 12; i <= 14; i++) {
@@ -103,10 +103,10 @@ void reset() {
 // pid functions
 void driveTask(int speed, double dist, int ms) { // drive pid
   bool driving = true;
-  double sp = dist / 12.9; // 12.9 - 16.5
+  double sp = dist / 16.5; // 12.9 - 16.5
   double prev_error = 0;
 
-  int kp = 200; //200 127
+  int kp = 190; //200 127
   int ki = 0;
   int kd = 100; //100 63
   double pv = 0;
@@ -148,8 +148,8 @@ void rotateTask(double rot, int ms) { // rotate pid
 
   rot /= 360;
   double sp;
-  if(rot < 0){ sp = rot* 3.0; } // turning counter clockwise - 3.0 - 2.4 - 2.8 - 2.5
-  else { sp = rot* 3.1; } // turning clockwise - 3.1 - 2.45 - 2.95 - 2.5
+  if(rot < 0){ sp = rot* 2.55; } // turning counter clockwise - 3.0 - 2.4 - 2.8 - 2.5
+  else { sp = rot* 2.45; } // turning clockwise - 3.1 - 2.45 - 2.95 - 2.5
   bool driving = true;
   double prev_error = 0;
 
@@ -163,10 +163,10 @@ void rotateTask(double rot, int ms) { // rotate pid
   double derivative = 0;
   int velocity = 0;
 
-  motor_tare_position(13);
+  motor_tare_position(backLeft);
 
   while(driving) {
-    pv = motor_get_position(13);
+    pv = motor_get_position(backLeft);
 
     if (error <= 0.005 && error >= -0.005) { integral += error; }
     else { integral = 0; }
@@ -177,11 +177,13 @@ void rotateTask(double rot, int ms) { // rotate pid
     prev_error = error;
 
     if (velocity > 100) { velocity = 100; }
+    else if (velocity <= 20 && velocity > 0) { velocity = 20; }
+    else if (velocity >= -20 && velocity < 0) { velocity = -20; }
     else if (velocity < -100) { velocity = -100; }
 
     rotate(velocity);
 
-    if (error <= .005 && error >= -.005) { //.005, .03
+    if (error <= .01 && error >= -.01) { //.005, .03
       driving = false;
     }
 
@@ -329,10 +331,11 @@ void slowTask(int speed, double dist, int ms) { // slow drive pid
   double derivative = 0;
   int velocity = 0;
 
-  motor_tare_position(13);
+  motor_tare_position(backLeft);
+  motor_tare_position(backRight);
 
   while(driving) {
-    pv = motor_get_position(13);
+    pv = (motor_get_position(backLeft) - motor_get_position(backRight)) / 2;
 
     // if (error <= 0.01 && error >= -0.01) { integral += error; }
     // else { integral = 0; }
@@ -375,10 +378,10 @@ void fastTurn(double rot, int ms) { // fast rotate pid
   double derivative = 0;
   int velocity = 0;
 
-  motor_tare_position(13);
+  motor_tare_position(backLeft);
 
   while(driving) {
-    pv = motor_get_position(13);
+    pv = motor_get_position(backLeft);
 
     if (error <= 0.005 && error >= -0.005) { integral += error; }
     else { integral = 0; }

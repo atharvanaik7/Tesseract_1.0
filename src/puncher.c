@@ -7,7 +7,7 @@ double total_rot = 0;
 double needed_rot = 0;
 double start_rot = 1;
 bool auto_ratchet = false;
-bool ratcheted = true;
+bool ratcheted = false;
 
 void puncherOp() {
 

@@ -10,6 +10,8 @@ LV_IMG_DECLARE(namelogo2);
 
 LV_IMG_DECLARE(simpletext);
 
+LV_IMG_DECLARE(bob);
+
 int color = 0;
 
 // Uses the Little_vgl library for the touchscreen graphics
@@ -47,8 +49,8 @@ void display() {
 
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
-  background_style.body.main_color = LV_COLOR_BLACK;
-  background_style.body.grad_color = LV_COLOR_BLACK;
+  background_style.body.main_color = LV_COLOR_WHITE;
+  background_style.body.grad_color = LV_COLOR_WHITE;
 
   lv_obj_t *scr = lv_obj_create(NULL, NULL);
   lv_obj_set_style(scr, &background_style);
@@ -83,11 +85,11 @@ void display() {
   static lv_style_t title_style;
   lv_style_copy(&title_style, &lv_style_plain);
   title_style.text.font = &lv_font_dejavu_20;
-  title_style.text.color = LV_COLOR_WHITE;
+  title_style.text.color = LV_COLOR_BLACK;
 
   static lv_style_t line_color;
   lv_style_copy(&line_color, &lv_style_plain);
-  line_color.line.color = LV_COLOR_WHITE;
+  line_color.line.color = LV_COLOR_BLACK;
 
 
   // Text///////////////////////////////////////////////////////////////////////
@@ -279,8 +281,8 @@ void display() {
 void simple_text() {
   static lv_style_t back_style;
   lv_style_copy(&back_style, &lv_style_plain);
-  back_style.body.main_color = LV_COLOR_BLACK;
-  back_style.body.grad_color = LV_COLOR_BLACK;
+  back_style.body.main_color = LV_COLOR_WHITE;
+  back_style.body.grad_color = LV_COLOR_WHITE;
 
   lv_obj_t *screen = lv_obj_create(NULL, NULL);
   lv_obj_set_style(screen, &back_style);
@@ -300,7 +302,7 @@ void simple_text() {
 
   static lv_style_t lines_color;
   lv_style_copy(&lines_color, &lv_style_plain);
-  lines_color.line.color = LV_COLOR_WHITE;
+  lines_color.line.color = LV_COLOR_BLACK;
 
   static lv_color_t needle_colors[] = {LV_COLOR_WHITE};
 
@@ -317,7 +319,7 @@ void simple_text() {
 
   lv_style_copy(&line_style, &lv_style_plain);
   line_style.line.width = 3;
-  line_style.line.color = LV_COLOR_WHITE;
+  line_style.line.color = LV_COLOR_BLACK;
 
   line1 = lv_line_create(lv_scr_act(), NULL);
   lv_line_set_y_invert(line1, true);
@@ -331,7 +333,7 @@ void simple_text() {
   // ACTUAL IMAGE //////////////////////////////////////////////////////////////
 
   lv_obj_t * nameImg2 = lv_img_create(lv_scr_act(), NULL);
-  lv_img_set_src(nameImg2, &simpletext);
+  lv_img_set_src(nameImg2, &bob);
   lv_obj_align(nameImg2, NULL, LV_ALIGN_CENTER, 85, 0);
 
   // ANIMATION /////////////////////////////////////////////////////////////////

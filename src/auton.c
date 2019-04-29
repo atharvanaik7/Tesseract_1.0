@@ -2,129 +2,130 @@
 ///////////////////////// CLOSE RED 18 SWING //////////////////////////////////////////////////////
 
 void close_red() {
-  intakeAuto(5.7); // starts intake
-  driveTask(200, 44.5, 50); // goes forward into cap and grabs the ball
-  driveTask(200, -46.5, 50); // comes back hits the wall to re-align
-  driveTask(80, 5.5, 50); // go foward a bit to have space to turn
-  rotateTask(-92, 0); // turn towards the flags to shoot
+  intakeAuto(5.4); // starts intake
+  driveTask(160, 44.5, 50); // goes forward into cap and grabs the ball
+  driveTask(160, -45.8, 50); // comes back hits the wall to re-align
+  driveTask(100, 5.5, 50); // go foward a bit to have space to turn
+  rotateTask(-84, 0); // turn towards the flags to shoot
   shoot(0.75); // shoot top flag
-  checkBall();
+  intakeAuto(20);
+  delay(450);
   angle(middle_flag); // angle to shoot middle
   shoot(1); // shoot middle flag
-  intakeAuto(15);
   rotateTask(-10, 0); // rotate so it is lined up with bottom flag
-  driveTask(200, 50, 0); // drive into bottom flag
-  driveTask(200, -24, 0); // back up so the robot is parallel with the cap
+  driveTask(160, 50, 0); // drive into bottom flag
+  driveTask(160, -24, 0); // back up so the robot is parallel with the cap
   rotateTask(90, 0); // turn towards the cap
-  driveTask(80, -6, 50); // back up into wall to re-align
+  driveTask(100, -6, 50); // back up into wall to re-align
   flipAuto(200, 4); // start intake to flip cap
-  shootfast(0.5);
   slowTask(130, 34, 0);
+  shootfast(0.5);
   angle(80); // angle to shoot middle flag on the other side
-  fastTurn(-25, 0); // rotate towards that flag
+  fastTurn(-55, 0); // rotate towards that flag
   intakeAuto(2); // intake to make sure ball is in puncher
   shoot(0.75); // shoot other side
   // skewTask(150, 18, 80, LEFT, 0);
-  fastTurn(-37, 0);
-  driveTask(200, 35, 0);
+  rotateTask(-8, 0);
+  driveTask(160, 39, 0);
 }
 
 //////////////////////////////////// CLOSE BLUE 18 SWING /////////////////////////////////////////////////////
 void close_blue(){
-  intakeAuto(6.15); // starts intake
-  driveTask(200, 44.5, 50); // goes forward into cap and grabs the ball
-  driveTask(200, -46, 50); // comes back hits the wall to re-align
-  driveTask(80, 6, 50); // go foward a bit to have space to turn
-  rotateTask(74, 0); // turn towards the flags to shoot
+  intakeAuto(6.1); // starts intake
+  driveTask(160, 44.5, 50); // goes forward into cap and grabs the ball
+  driveTask(160, -45.8, 50); // comes back hits the wall to re-align
+  driveTask(100, 6, 50); // go foward a bit to have space to turn
+  rotateTask(82, 0); // turn towards the flags to shoot
   shoot(0.75); // shoot top flag
-  checkBall();
+  intakeAuto(20);
+  delay(450);
   angle(middle_flag); // angle to shoot middle
   shoot(1); // shoot middle flag
-  intakeAuto(15);
-  rotateTask(8, 0); // rotate so it is lined up with bottom flag
-  driveTask(200, 50, 0); // drive into bottom flag
-  driveTask(200, -24, 0); // back up so the robot is parallel with the cap
+  rotateTask(5, 0); // rotate so it is lined up with bottom flag
+  driveTask(160, 50, 0); // drive into bottom flag
+  driveTask(160, -24, 0); // back up so the robot is parallel with the cap
   rotateTask(-90, 0); // turn towards the cap
-  driveTask(80, -9, 50); // back up into wall to re-align
+  driveTask(100, -8, 50); // back up into wall to re-align
   flipAuto(200, 4); // start intake to flip cap
-  shootfast(0.5);
   slowTask(130, 34, 0);
-  angle(middle_flag); // angle to shoot middle flag on the other side
-  fastTurn(25, 0); // rotate towards that flag
+  shootfast(0.5);
+  angle(80); // angle to shoot middle flag on the other side
+  fastTurn(57, 0); // rotate towards that flag
   intakeAuto(5); // intake to make sure ball is in puncher
   shoot(0.75); // shoot other side
-  fastTurn(33, 0);
-  driveTask(200, 35, 0);
+  rotateTask(8, 0);
+  driveTask(160, 35, 0);
 }
 
 //////////////////////////////////  BACK RED FAR FLAGS 15 SWING //////////////////////////////////////////
 
 void backred() {
   angle(middle_flag);
-  driveTask(200, -52, 60);
+  driveTask(160, -52, 60);
   armAuto(80, 90);
-  slowTask(100, 6, 0);
-  rotateTask(-25, 100);
-  slowTask(100, 17.5, 100);
-  rotateTask(-96, 0);
+  slowTask(100, 20, 0);
+  rotateTask(-24, 0);
+  slowTask(100, 13, 50);
+  rotateTask(-98, 0);
   coastMode();
-  slowTask(80, 6, 0);
-  armAuto(100, 180);
-  delay(1000);
+  slowTask(80, 5.5, 0);
+  armAuto(120, 180);
+  delay(600);
   brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
-  delay(600);
-  driveTask(200, -12, 100);
-  rotateTask(-93, 100);
-  intakeAuto(3.5);
-  driveTask(200, 11, 100);
-  driveTask(200, -5, 50);
+  delay(400);
+  driveTask(160, -10, 0);
   rotateTask(-90, 0);
-  slowTask(80, 8, 200);
-  slowTask(80, -8, 100);
-  rotateTask(40, 0);
-  shoot(0.85);
-  checkBall();
-  angle(0);
-  shoot(1.5);
-  rotateTask(-40, 0);
-  driveTask(200, 24, 0);
+  intakeAuto(3.5);
+  angle(55);
+  driveTask(160, 18, 50);
+  driveTask(160, -6, 50);
+  rotateTask(-83, 80);
+  slowTask(200, 40, 60);
 }
 
 /////////////////////////////////// BACK BLUE FAR FLAGS 15 SWING ////////////////////////////////////////////////////
 
 void backblue() {
   angle(middle_flag);
-  driveTask(200, -52, 60);
+  driveTask(160, -52, 60);
   armAuto(80, 90);
-  slowTask(100, 6, 0);
-  rotateTask(25, 100);
-  slowTask(100, 17.5, 100);
-  rotateTask(96, 0);
+  slowTask(100, 15, 0);
+  rotateTask(35, 0);
+  slowTask(100, 17, 50);
+  rotateTask(98, 0);
   coastMode();
-  slowTask(80, 6, 0);
-  armAuto(100, 180);
-  delay(1000);
+  slowTask(80, 5.5, 0);
+  armAuto(120, 180);
+  delay(600);
   brakeMode();
   slowTask(90, -14, 0);
   armAuto(180, 0);
-  delay(600);
-  driveTask(150, -12, 100);
-  rotateTask(93, 100);
-  intakeAuto(3.5);
-  driveTask(200, 11, 100);
-  driveTask(200, -5, 50);
+  delay(400);
+  driveTask(160, -10, 0);
   rotateTask(90, 0);
-  slowTask(80, 8, 200);
-  slowTask(80, -8, 100);
-  rotateTask(-40, 0);
-  shoot(0.85);
-  checkBall();
-  angle(0);
-  shoot(1.5);
-  rotateTask(40, 0);
-  driveTask(200, 24, 0);
+  intakeAuto(3.5);
+  angle(30);
+  driveTask(160, 19.5, 50);
+  driveTask(160, -5, 50);
+  rotateTask(95, 0);
+  // slowTask(80, 14, 60);
+  // slowTask(80, -8.2, 50);
+  // rotateTask(-36, 0);
+  // shoot(0.60);
+  // intakeAuto(5);
+  // delay(300);
+  // angle(0);
+  // shoot(1.5);
+  // rotateTask(30, 0);
+  slowTask(200, 40, 150);
+  // rotateTask(-60, 1000);
+  // shoot(0.60);
+  // intakeAuto(5);
+  // delay(450);
+  // angle(80);
+  // shoot(1.5);
 }
 
 ////////////////////////////////// SKILLS 25 ///////////////////////////////////////////////////////////////////
@@ -132,82 +133,84 @@ void backblue() {
 void skills_auton() {
   intakeAuto(5.8); // intake ball
   driveTask(160, 49, 150); // drive into cap with ball
-  driveTask(160, -49.5, 50); // back up into wall
+  driveTask(160, -50, 50); // back up into wall
   driveTask(100, 6, 50);  // go forward for room to turn
-  rotateTask(-90, 0); // turn towards flags
+  rotateTask(-93, 0); // turn towards flags
   driveTask(160, 48, 0); // go towards flags
   rotateTask(90, 0); // turn to line up with wall
-  driveTask(100, -8, 50); // back up into wall
+  driveTask(60, -8, 50); // back up into wall
   driveTask(100, 4.5, 50); // drive forward for room to turn
-  rotateTask(-85, 0); // turn to shoot flags
+  rotateTask(-85.5, 0); // turn to shoot flags
   shoot(0.75); // shoot top flag
-  checkBall();
+  intakeAuto(20);
+  delay(400);
   angle(middle_flag); // angle to shoot middle flag
   shoot(1.4); // shoot middle flag
-  intakeAuto(15);
   angle(0); // angle back to down to 0
   rotateTask(-10, 0); // rotate to line up with bottom flag
   driveTask(160, 52, 100); // drive into bottom flag
-  driveTask(160, -49, 0); // drive back so it is parallel with the cap on the right
+  driveTask(160, -51, 0); // drive back so it is parallel with the cap on the right
   rotateTask(90, 0); // rotate towards cap
-  driveTask(100, -9, 100); // back into wall
-  intakeAuto(6); // start intake
-  driveTask(160, 50, 150); // go towards ball
-  driveTask(160, -4, 0); // back up so the cap does not interfere with turning
+  driveTask(60, -9.5, 100); // back into wall
+  intakeAuto(5.7); // start intake
+  driveTask(160, 48.5, 150); // go towards ball
+  driveTask(160, -5, 0); // back up so the cap does not interfere with turning
   rotateTask(-90, 50); // rotate towards middle column flags
-  driveTask(100, -8, 50); // drive back into platform to center
+  driveTask(80, -7, 50); // drive back into platform to center
   driveTask(100, 5, 0); // drive forward for room to turn
-  rotateTask(20, 0); // rotate towards the middle column flags
+  rotateTask(18, 0); // rotate towards the middle column flags
   shoot(0.75); // shoot top flag
-  checkBall();
+  intakeAuto(5);
+  delay(400);
   angle(middle_flag); // angle to middle flag
   shoot(1.4); // shoot middle flag
   rotateTask(-8, 0); // turn towards bottom flag
   intakeAuto(10); // intake to grab ball
   driveTask(160, 38, 0); // drive into bottom flag
-  rotateTask(-8, 0); // turn a bit more so it is perfectly aligned with wall
-  driveTask(100, 19, 50); // drive into wall
+  rotateTask(-5, 0); // turn a bit more so it is perfectly aligned with wall
+  driveTask(100, 14, 50); // drive into wall
   angle(0); // angle to high flag
-  driveTask(160, -26, 0); // drive back to be parallel with cap
-  rotateTask(-90, 0); // rotate towards cap
+  driveTask(160, -28, 0); // drive back to be parallel with cap
+  rotateTask(-95, 0); // rotate towards cap
   flipAuto(140, 4); // turn on intake to flip cap
-  slowTask(120, 35, 50); // drive into cap
-  slowTask(140, -10, 0); // drive back to line up with bottom flag
-  rotateTask(190, 0); // rotate towards bottom flag
+  slowTask(120, 35, 150); // drive into cap
+  driveTask(160, -10, 100); // drive back to line up with bottom flag
+  rotateTask(184, 0); // rotate towards bottom flag
   flipAuto(150, 20); // start intake to flip
-  driveTask(160, 65, 50); // drive into cap to flip
-  slowTask(140, -15, 0); // back up so cap does not get caught when turning
-  rotateTask(-93, 0); // rotate towards bottom flag
-  slowTask(120, 30, 50); // drive into bottom flag
+  driveTask(160, 82, 50); // drive into cap to flip
+  driveTask(160, -11, 0); // back up so cap does not get caught when turning
+  rotateTask(-98, 0); // rotate towards bottom flag
+  driveTask(120, 32, 50); // drive into bottom flag
   driveTask(160, -50, 0); // // drive back to be parallel with cap
   rotateTask(-95, 0); // rotate towards cap
   intakeAuto(3); // start intake to grab ball
-  driveTask(160, 26, 150); // drive into cap and grab ball
+  driveTask(160, 22, 150); // drive into cap and grab ball
   driveTask(160, -6, 50); // drive into wall
   rotateTask(90, 0);
-  slowTask(80, -8, 100);
-  slowTask(80, 6, 50);
+  driveTask(80, -8, 50);
+  driveTask(80, 6, 50);
   rotateTask(20, 0);
   // driveTask(140, 25, 100); // drive forward to be parallel with flags - +25
   // rotateTask(93, 0); // rotate towards flags
   shoot(0.75); // shoot top
-  checkBall();
+  intakeAuto(5);
+  delay(400);
   angle(middle_flag); // angle to middle flag
   shoot(1.4); // shoot middle
-  rotateTask(-110, 50); // rotate to be parallel with wall
-  slowTask(140, -15, 0); // drive back
-  rotateTask(-90, 0); // rotate to get closer to platform
+  rotateTask(70, 50); // rotate to be parallel with wall
+  driveTask(140, -22, 0); // drive back
+  rotateTask(90, 0); // rotate to get closer to platform
   driveTask(160, 26.5, 0); // drive to be parallel with platform
   rotateTask(90, 0); // rotate towards the platform
-  driveTask(100, -15, 100); // drive into wall
+  driveTask(60, -15, 100); // drive into wall
   intakeAuto(10); // start intake in case any ball are in the way
-  driveTask(200, 90, 0); // drive onto platform
+  driveTask(200, 95, 0); // drive onto platform
 }
 
 /////////////////////////// TESTING AUTON ////////////////////////////////////////////////////////
 
 void test(){ // testing pid
-  skewTask(100, 48, 90, LEFT, 0);
+  rotateTask(-90, 0);
 }
 
 

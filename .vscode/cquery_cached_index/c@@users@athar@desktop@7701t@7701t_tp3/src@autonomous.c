@@ -12,9 +12,9 @@
      case 4: backblue(); break;
      case 5: skills_auton(); break;
    }
-   // close_blue();
+   // close_red();
    // skills_auton();
    // test();
-   // display();
+   // simple_text();
    coastMode();
 }
